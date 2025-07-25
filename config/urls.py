@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Importa directamente la vista dashboard
+from indicadores.views import dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Ya podemos usar dashboard sin prefix de views.
+    path('dashboard/', dashboard, name='dashboard'),
 ]
+

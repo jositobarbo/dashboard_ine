@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard INE</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Gráfico de ejemplo</h2>
+    <canvas id="grafico" width="800" height="400"></canvas>
+
+    <script>
+        // Variables desde Django
+        const etiquetas = {{ fechas|safe }};
+        const valores = {{ valores|safe }};
+
+        const data = {
+            labels: etiquetas,
+            datasets: [{
+                label: 'Ocupación Hotelera (%)',
+                data: valores,
+                borderColor: 'blue',
+                backgroundColor: 'lightblue',
+                fill: false,
+                tension: 0.2
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data
+        };
+
+        new Chart(document.getElementById('grafico'), config);
+    </script>
+</body>
+</html>
