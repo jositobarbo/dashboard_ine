@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # Importa directamente la vista dashboard
-from indicadores.views import dashboard
+from indicadores.views import dashboard, datos_indicador, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home, name='home'),
     # Ya podemos usar dashboard sin prefix de views.
     path('dashboard/', dashboard, name='dashboard'),
+    path('api/datos/<str:codigo>/', datos_indicador, name='datos_indicador'),
 ]
 
